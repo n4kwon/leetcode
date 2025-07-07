@@ -1,0 +1,28 @@
+
+from collections import deque
+
+
+def BreadthFirstSearch(V[1..n], adj[1..n], s):
+    pred[1..n] = [null] * n
+    dist[1..n] = [infty] * n
+    colour[1..n] = [white] * n
+    q = new queue
+
+    // Enqueue starting node s
+    colour[s] = gray
+    dist[s] = 0
+    q.enqueue(s)
+
+    while q is not empty:
+        u = q.dequeue()
+        for neighbor in adj[u]:
+            if colour[neighbor] == white:
+                pred[neighbor] = u
+                dist[neighbor] = dist[u] + 1
+                colour[neighbor] = gray
+                q.enqueue(neighbor)
+        colour[u] = black
+        
+    return colour, dist, pred
+            
+    

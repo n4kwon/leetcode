@@ -1,0 +1,26 @@
+def DepthFirstSearch(V[1..n], adj[1..n], start):
+    colour[1..n] = [white] * n
+    pred[1..n] = [None] * n
+    d[1..n] = [None] * n // discovery times
+    f[1..n] = [None] * n // finish times
+    time = 0
+
+    for node in V:
+        if colour[node] == white:
+            DFSVisit(node, adj, colour, pred, d, f, time)
+
+    return colour, pred, d, f
+
+def DFSVisit(u, adj, colour, pred, d, f, time):
+    colour[u] = gray
+    time += 1
+    d[u] = time
+
+    for v in adj[u]:
+        if colour[v] == white:
+            pred[v] = u
+            DFSVisit(v, adj, colour, pred, d, f, time)
+
+    colour[u] = black
+    time += 1
+    f = time
