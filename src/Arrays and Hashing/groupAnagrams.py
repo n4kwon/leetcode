@@ -14,7 +14,7 @@ class Solution:
             for c in s:
                 freq[ord(c) - ord('a')] += 1
             res[tuple(freq)].append(s)
-        return list(res.values)
+        return list(res.values())
 
                 
                 

@@ -31,6 +31,10 @@ class Solution:
 #     for j in range(len(nums) - 1, -1, -1):
 #         suffixProds[j] = suffix
 #         suffix *= nums[j]
+#     res = []
+#     for i in range(len(nums)):
+#         res[i] = prefixProds[i] * suffixProds[i]
+#     return res
 
 
 

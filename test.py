@@ -3,27 +3,36 @@ from collections import defaultdict
 
 
 class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        freq = {} # key is integer in nums; value is frequency of said integer
-        for num in nums:
-            if num in freq:
-                freq[num] += 1
-            else:
-                freq[num] = 1
-        
-        buckets = [[] for _ in range(len(nums))]
-        for key,val in freq.items():
-            buckets[val].append(key)
-        
-        res = []
-        for i in range(len(buckets) - 1, 0, -1):
-            for num in buckets[i]:
-                res.append(num)
-                if len(res) == k:
-                    return res
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        res = [1] * len(nums)
 
+        prefix = 1
+        suffix = 1
+        for i in range(len(nums)):
+            res[i] *= prefix
+            prefix *= nums[i]
+        
+        for j in range(len(nums) - 1, -1, -1):
+            res[j] *= suffix
+            suffix *= nums[j]
+        return res
         
             
+
+    def longestConsecutive(self, nums: List[int]) -> int:
+        seen = set()
+        longest = 0
+        for num in nums:
+            seen.add(num)
+        
+        for num in nums:
+            if num - 1 not in seen:
+                count = 0
+                while num + count in seen:
+                    count += 1
+                if count > longest:
+                    longest = count
+        return longest
 
 
     

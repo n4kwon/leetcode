@@ -8,9 +8,9 @@ def containsDuplicate(self, nums: List[int]) -> bool:
     #             return True
     # return False
     seen = set()
-    for i in nums:
-        if i in visited:
+    for num in nums:
+        if num in seen:
             return True
         else:
-            seen.add(i)
+            seen.add(num)
     return False
