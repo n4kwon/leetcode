@@ -21,7 +21,7 @@ def threeSum(self, nums: List[int]) -> List[List[int]]:
             elif sum < 0:
                 l += 1
             else:
-                res.append([i, l, r])
+                res.append([s[i], s[l], s[r]])
                 l += 1
                 r -= 1
                 while s[l] == s[l - 1] and l < r:
